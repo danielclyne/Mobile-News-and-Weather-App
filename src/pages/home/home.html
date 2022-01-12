@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      G00249137
+    </ion-title>
+    <!-- Positions button at end of navbar -->
+    <ion-buttons end>
+      <!-- When button is clicked this function will open the Settings page -->
+      <button (click)="openSettingsPage()">
+        <!-- Settings icon -->
+        <ion-icon name="settings">
+        </ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- Displays if a city has not been set -->
+  <h1 [hidden]="cityNotSetHidden">City has not been set</h1>
+  <!-- Displays if set city is not found on restcountires.com -->
+  <h1 [hidden]="cityNotFoundHidden">{{ city }} not found, try another city in Settings</h1>
+
+  <ion-list>
+    <!-- Loops cityData array and displays chosen data in a list-->
+    <ion-item *ngFor="let data of cityData">
+      <h1>News & weather for {{ data.capital }}, {{ data.name.common }}.</h1>
+      <img src="{{ data.flags.png }}" height="100" width="200">
+    </ion-item>
+    <br>
+    <!-- Loops weatherData array and displays chosen data in a list -->
+    <ion-item *ngFor="let data of weatherData">
+      <h1>Temperature:</h1>
+      <h1>{{ data.temp }} ({{ unit }})</h1>
+      <br>
+      <h1>Weather:</h1>
+      <h1>{{ data.weather.description }}</h1>
+      <!-- Displays chosen weather icon from URL -->
+      <img src="https://www.weatherbit.io/static/img/icons/{{ data.weather.icon }}.png">
+      <br>
+      <h1>Wind From:</h1>
+      <h1>{{ data.wind_cdir_full }}</h1>
+    </ion-item>
+  </ion-list>
+
+  <!-- Displays if weather data is found for set city. Button click opens News page -->
+  <button [hidden]="newsButtonHidden" ion-button (click)="openNewsPage()">News</button>
+
+</ion-content>

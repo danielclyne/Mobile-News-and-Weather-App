@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Settings</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <h2>Enter City:</h2>
+  <!-- Input to set city -->
+  <input [(ngModel)]="inputCity">
+  <!-- Paragrapgh to display city if set -->
+  <h5 id="setCity">City set to: {{ city }}</h5>
+  <br>
+  <h2>Settings</h2>
+  <h5>Units:</h5>
+
+  <!-- Radio group to set temperature unit type -->
+  <ion-list radio-group [(ngModel)]="inputUnit">
+    <ion-item>
+      <ion-label>Scientific</ion-label>
+      <ion-radio value="s"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Metric</ion-label>
+      <ion-radio value="m"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Fahrenheit</ion-label>
+      <ion-radio value="i"></ion-radio>
+    </ion-item>
+  </ion-list>
+
+  <!-- Save button to save settings. Calls saveSettings function when clicked -->
+  <button ion-button (click)="saveSettings()">Save</button>
+
+</ion-content>

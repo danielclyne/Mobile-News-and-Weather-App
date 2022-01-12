@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>News</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- Displays different news headings depending on if news is available -->
+  <h1>{{ newsPageHeading }}</h1>
+
+  <ion-list>
+    <!-- Loops newsData and displays chosen data in a list -->
+    <ion-item *ngFor="let data of newsData">
+      <!-- <a> tag wrapped around elements to open news link in new tab/ window -->
+      <a href="{{ data.url }}" target="_blank">
+        <!-- If there is no image for the news article noImageAvailable.webp is displayed instead-->
+        <img src="{{ data.urlToImage }}" onerror="this.src='../../assets/imgs/noImageAvailable.webp'" height="250"
+          width="400" alt="No image found">
+        <h1>{{ data.title }}</h1>
+        <p>{{ data.description }}</p>
+      </a>
+      <br>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
